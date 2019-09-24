@@ -23,7 +23,7 @@ from keras.layers import Dense, Activation, Convolution2D, MaxPooling2D, Flatten
 from keras.optimizers import Adam
 
 # download the mnist to the path '~/.keras/datasets/' if it is the first time to be called
-# X shape (60,000 28x28), y shape (10,000, )
+# training X shape (60000, 28x28), Y shape (60000, ). test X shape (10000, 28x28), Y shape (10000, )
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
 # data pre-processing
@@ -37,7 +37,7 @@ model = Sequential()
 
 # Conv layer 1 output shape (32, 28, 28)
 model.add(Convolution2D(
-    batch_input_shape=(64, 1, 28, 28),
+    batch_input_shape=(None, 1, 28, 28),
     filters=32,
     kernel_size=5,
     strides=1,
